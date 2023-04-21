@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+
+
+        <form name="registrationForm" ng-submit="submitForm()" novalidate>
+            <label for="name">Name:</label>
+            <input type="text" name="name" ng-model="user.name" required><br>
+          
+            <label for="age">Age:</label>
+            <input type="number" name="age" ng-model="user.age" required><br>
+          
+            <label for="mobile">Mobile Number:</label>
+            <input type="tel" name="mobile" ng-model="user.mobile" required><br>
+          
+            <label for="email">Email:</label>
+            <input type="email" name="email" ng-model="user.email" required><br>
+          
+            <label for="gender">Gender:</label><br>
+            <input type="radio" name="gender" ng-model="user.gender" ng-model="male" required> Male
+            <input type="radio" name="gender" ng-model="user.gender" ng-model="female" required> Female<br>
+          
+            <label for="state">State:</label>
+            <select name="state" ng-model="user.state" ng-options="state for state in states" required><br>
+              <option ng-model="">Select a state</option>
+              <option ng-model="">Tamil Nadu</option>
+              <option ng-model="">Kerala</option>
+              <option ng-model="">Karnataka</option>
+              <option ng-model="">Andhra Pradesh</option>
+              <option ng-model="">Delhi</option>
+
+              
+            </select>
+          
+            <label for="password">Password:</label><br>
+            <input type="password" name="password" ng-model="user.password" ng-minlength="8" ng-pattern="/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/" required>
+          
+            <button type="submit" ng-disabled="registrationForm.$invalid">Submit</button>
+          </form>
+    </body>
+</html>

@@ -1,0 +1,29 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+        <script>
+              var app = angular.module("MyApp",["ngRoute"]);
+              app.config(function($routeProvider){
+                    $routeProvider.when('/personal',{templateUrl:'personal.html'})
+                                  .when('/academic',{templateUrl:'academic.html'})
+                                  .when('/signin',{templateUrl: 'signin.html'})
+                                  .when('/signup',{templateUrl: 'signup.html'});
+              });
+        </script>
+    </head>
+    <body ng-app="MyApp">
+        <div>
+            <a href="#!personal">Personal_Profile</a>
+            <a href="#!academic">Academic</a>
+            <a href="#!signin">sign in</a>
+            <a href="#!signup">sign up</a>
+        </div>
+        <hr>
+        <div ng-view style="border: 1px solid blue;"></div>
+        </div>
+    </body>
+    </html>
+ 

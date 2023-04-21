@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Library</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+        <script>
+              var app = angular.module("MyApp",["ngRoute"]);
+              app.config(function($routeProvider){
+                    $routeProvider.when('/videogallery',{templateUrl:'videogallery.html'})
+                                  .when('/newsupdation',{templateUrl:'newsupdation.html'})
+                                  .when('/Seminars',{templateUrl: 'Seminars.html'})
+                                  .when('/photogallery',{templateUrl: 'photogallery.html'});
+              });
+        </script>
+</head>
+<body ng-app="MyApp">
+    <div style="align-items: center;text-align:center">
+        <H1 style="background-color: aliceblue;color:goldenrod;padding-top:15px;padding-bottom:15px">Knowledge <i> Library </i> </H1>
+
+        <div>
+            <style>
+                nav a {
+                    float: left;
+                    display: block;
+                    color: rgb(255, 255, 255);
+                    position: sticky;
+                    text-align: center;
+                    background-color: #fdf7d0;
+                    padding: 14px 16px;
+                    width: 20%;
+                    text-decoration: none;
+                }
+                
+                nav a:hover {
+                    background-color: goldenrod;
+                    color: black;
+                }
+            </style>
+                    <nav style="background-color: #333;color:goldenrod;width:100%;margin-left:4%">
+            
+                        <a href="#!videogallery">VIDEO GALLERY</a>
+                        <a href="#!newsupdation">NEWS UPDATION</a>
+                        <a href="#!Seminars">SEMINARS</a>
+                        <a href="#!photogallery">PHOTO GALLERY</a>
+                  <br>
+                  <br>
+                  
+                    </nav>
+                    <br>
+                </div>
+    </div>
+    
+    
+    <div ng-view style="border: 1px solid blue;"></div>
+        </div>
+</body>
+</html>

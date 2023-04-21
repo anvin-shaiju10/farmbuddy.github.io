@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CROP SUITABILITY CHECKER</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#verification').click(function() {
+                
+
+                var state = $('#state').val();
+                var soil = $('#soil').val();
+                var depth = $('#depth').val();
+                var ph = $('#ph').val();
+
+                // Calculate fruit score based on selected state
+                var fruitScore;
+                switch (state) {
+                    case 'goa':
+                        fruitScore = 10;
+                        break;
+                    case 'k':
+                        fruitScore = 8.5;
+                        break;
+                    case 't':
+                        fruitScore = 7;
+                        break;
+                    case 'g':
+                        fruitScore = 10;
+                        break;
+                    case 'm':
+                        fruitScore = 10;
+                        break;
+                    case 'a':
+                        fruitScore = 4;
+                        break;
+                    case 'j':
+                        fruitScore = 2;
+                        break;
+                }
+
+                // Calculate crop score based on selected soil type
+                var cropScore;
+                switch (soil) {
+                    case 'lateritic':
+                        cropScore = 6;
+                        break;
+                    case 'loamy':
+                        cropScore = 8;
+                        break;
+                    case 'alluvial':
+                        cropScore = 10;
+                        break;
+                    case 'sandy':
+                        cropScore = 4;
+                        break;
+                    case 'sandyloam':
+                        cropScore = 7;
+                        break;
+                }
+
+                // Calculate depth score based on selected depth
+                var depthScore;
+                switch (depth) {
+                    case 'onem':
+                        depthScore = 4;
+                        break;
+                    case 'twom':
+                        depthScore = 7;
+                        break;
+                    case 'threem':
+                        depthScore = 10;
+                        break;
+                    case 'fourm':
+                        depthScore = 6;
+                        break;
+                }
+
+                // Calculate pH score based on selected pH
+                var phScore;
+                switch (ph) {
+                    case 'fourp':
+                        phScore = 4;
+                        break;
+                    case 'fivep':
+                        phScore = 7;
+                        break;
+                    case 'sixp':
+                        phScore = 10;
+                        break;
+                    case 'sevenp':
+                        phScore = 6;
+                        break;
+                }
+
+                // Add up the scores
+                var totalScore = fruitScore + cropScore + depthScore + phScore;
+
+                $('#result').html(totalScore);
+            });
+        });
+    </script>
+</head>
+
+<body style="font-family: verdana; background-image: url('bluewall.jpg'); margin-top: 50px; border-radius: 10px; background-size: cover; background-repeat: no-repeat;">
+    <h1 style="text-align: center; color: rgb(189, 223, 253)">ENTER THE DETAILS HERE</h1>
+    <br>
+    <br>
+    <div style="background-image: url('conditionback.jpg'); margin: auto; width: 600px; height: 500px; margin-top: 50px; border-radius: 10px; background-size: cover; opacity: 0.8; float: left; margin-left: 2cm;">
+        <div style="font-size: 25px; margin-left: 1cm">
+            <br>
+            <form id="myForm">
+                <div style="font-size: 25px;">
+                    Select the State
+                    <select name="state" id="state" style="height: 28px; width: 130px;" >
+                        <option value="goa">Goa</option>
+                        <option value="k">Kerala</option>
+                        <option value="t">Bihar</option>
+                        <option value="g">Gujarat</option>
+                        <option value="m">Maharashtra</option>
+                        <option value="a">Assam</option>
+                        <option value="j">Jammu & Kashmir</option>
+                    </select>
+                    
+                </div>
+                Select the Soil Type
+                <select name="soil" id="soil" style="height: 28px; width: 130px;">
+                    <option value="lateritic">Lateritic</option>
+                    <option value="loamy">Loamy</option>
+                    <option value="alluvial">Alluvial</option>
+                    <option value="sandy">Sandy</option>
+                    <option value="sandyloam">Sandy Loam</option>
+                </select>
+                <div style="font-size: 25px; margin-left: cm">
+                    Select the Depth
+                    <select  id="depth" style="height: 28px; width: 130px;" >
+                        <option value="onem">1m &lt;</option>
+                        <option value="twom">1-2</option>
+                        <option value="threem">2-3</option>
+                        <option value="fourm">3&gt;</option>
+                    </select>
+                    
+                </div>
+                <div style="font-size: 25px; margin-left: 1cm">
+                    Select the PH 
+                    <select name="ph" id="ph" style="height: 28px; width: 130px;" >
+                        <option value="fourp">4 &lt;</option>
+                        <option value="fivep">4-5</option>
+                        <option value="sixp">5-7</option>
+                        <option value="sevenp">7-9&gt;</option>
+                    </select>
+
+                    
+   </div>
+   
+    <br>
+
+    <hr style="height: 1px ;background-color:black;margin:0%">
+    
+        <br>
+        <button id="verification" type="submit"  style="background-color: blueviolet; padding-left:20px;padding-right:20px;font-size:20px;color:aliceblue;margin-left:30%"><b> Verify and Submit</b></button> 
+        <br>
+        
+        <p  id="result" style="text-align:center;font-size: 15px;color:black;"></p>
+        
+
+</div>
+</form>
+</body>
+</html>

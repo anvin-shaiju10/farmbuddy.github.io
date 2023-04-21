@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CROP SUITABILITY CHECKER</title>
+    <script
+src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+
+    <script>
+        var app = angular.module("myapp",[]);
+        app.controller('mycontroller',function($scope){
+            $scope.state = '';
+            $scope.soil = '';
+            $scope.depth = '';
+            $scope.ph = '';
+            $scope.verification = function(){                
+               
+                    
+                    switch ($scope.state) {
+                      case '1':
+                        $scope.fruitScore = 10;
+                        break;
+                      case '2':
+                      $scope.fruitScore = 8;
+                        break;
+                      case '3':
+                      $scope.fruitScore = 7;
+                        break;
+                      case '4':
+                      $scope.fruitScore =10;
+                        break;
+                      case '5':
+                      $scope.fruitScore = 10;
+                        break;
+                      case '6':
+                      $scope.fruitScore = 4;
+                        break;
+                      case '7':
+                      $scope.fruitScore = 2;
+                        break;
+                        default:
+                    $scope.fruitScore = 0;
+                    break;
+
+                    }
+                    
+                    // Calculate crop score based on selected soil type
+                    
+                    switch ($scope.soil) {
+                      case '1':
+                      $scope.cropScore = 6;
+                        break;
+                      case '2':
+                      $scope.cropScore = 8;
+                        break;
+                      case '3':
+                      $scope.cropScore = 10;
+                        break;
+                      case '4':
+                      $scope.cropScore =4;
+                        break;
+                      case '5':
+                      $scope.cropScore = 7;
+                        break;
+                        default:
+                        $scope.cropScore = 0;
+                        break;
+
+                    }
+                    
+                    // Calculate depth score based on selected depth
+                    //alert("depth"+$scope.depth);
+
+                    switch ($scope.depth) {
+                      case '1':
+                      $scope.depthScore = 4;
+                        break;
+                      case '2':
+                      $scope.depthScore = 7;
+                        break;
+                      case '3':
+                      $scope.depthScore = 10;
+                        break;
+                      case '4':
+                      $scope.depthScore = 6;
+                        break;
+                        default:
+                      $scope.depthScore = 0;
+                        break;
+
+                    }
+                    
+                    // Calculate pH score based on selected pH
+                    
+                    switch ($scope.ph) {
+                      case '1':
+                      $scope.phScore = 4;
+                        break;
+                      case '2':
+                      $scope.phScore = 7;
+                        break;
+                      case '3':
+                      $scope.phScore = 10;
+                        break;
+                      case '4':
+                      $scope.phScore = 6;
+                        break;
+                        default:
+                      $scope.phScore = 0;
+                        break;
+
+                    }
+
+                    switch ($scope.hydration) {
+                      case '1':
+                      $scope.hydrationscore = 5;
+                        break;
+                      case '2':
+                      $scope.hydrationscore = 6;
+                        break;
+                      case '3':
+                      $scope.hydrationscore = 10;
+                        break;
+                      case '4':
+                      $scope.hydrationscore = 8;
+                        break;
+                        default:
+                      $scope.hydrationscore = 0;
+                        break;
+
+                    }
+                    
+                    
+                    // Add up the scores
+                    alert("You are Confirming THe selection")
+                    $scope.totalScore = $scope.fruitScore + $scope.cropScore + $scope.depthScore + $scope.phScore +$scope.hydrationscore;
+                    $scope.show= $scope.totalScore;
+                    $scope.rate1="40-50 Excellent Condition For the Growth";
+                    $scope.rate2="30-40 Good Condition For the Growth";
+                    $scope.rate3="20-30 Condition For the growth";
+                    $scope.rate4="10-20 Bad Conditon For the Growth";
+                    $scope.rate5="0-10 Do not Grow the Crop";
+                    {
+                      if($scope.totalScore>40)
+                      $scope.message="Your score "+$scope.totalScore+" is Excellent Condition To grow";
+                      if($scope.totalScore<40 && $scope.totalScore >=30)
+                      $scope.message="Your score "+$scope.totalScore+" is good Condition To grow";
+                      if($scope.totalScore<30 && $scope.totalScore >20) 
+                      $scope.message="Your score "+$scope.totalScore+" is Average Condition To grow";
+                      if($scope.totalScore<20 && $scope.totalScore >10) 
+                      $scope.message="Your score "+$scope.totalScore+" is Bad Condition To grow";
+                      if($scope.totalScore<10)  
+                      $scope.message="Your score "+$scope.totalScore+" is worst Condition To grow";
+                    }
+
+                    
+                  }
+                  
+               
+        })
+        </script>
+</head>
+
+<body ng-app="myapp" ng-controller="mycontroller" style=" font-family:verdana;background-image: url('bluewall.jpg');margin: top 50px;border-radius:10px;background-size:cover;background-repeat:no-repeat">
+    <h1 style="text-align:center;color:rgb(189, 223, 253)">ENTER THE DETAILS HERE</h1>
+    <BR>
+        <br>
+    <div style="background-image: url('conditionback.jpg');margin:auto;width: 600px;height: 500px;margin: top 50px;border-radius:10px;background-size:cover;opacity:0.8;float:left;margin-left: 2cm;">
+   <div style="font-size:25px;margin-left:1cm">
+    <br>
+    <form name="myForm">
+        <div  style="font-size:25px;">
+            Select the State
+            <select ng-model="state" name="state" style="height: 28px;width: 130px;" required>
+                   <option value="1">Goa</option>
+                   <option value="2">Kerala</option>
+                   <option value="3">Bihar</option>
+                   <option value="4">Gujarat</option>
+                   <option value="5">Maharashtra</option>
+                   <option value="6">Assam</option>
+                   <option value="7">Jammu & Kashmir</option>
+               </select>
+               
+       </div>
+          Select the Soil Type <select ng-model="soil" name="soil" style="height: 28px;width: 130px;">
+        <option value="1">Lateritic</option>
+        <option value="2">Loamy</option>
+        <option value="3">Alluvial</option>
+        <option value="4">Sandy</option>
+        <option value="5">Sandy Loam</option> 
+    </select>
+   </div>
+    <div  style="font-size:25px;margin-left:1cm">
+         Select the Depth
+         <select ng-model="depth" name="depth" style="height: 28px;width: 130px;" required>
+                <option value="1">1 m</option>
+                <option value="2">1m-2m</option>
+                <option value="3">2m-3m</option>
+                <option value="4">3m > </option>
+            </select>
+            
+    </div>
+    <div  style="font-size:25px;margin-left:1cm">
+        Select the PH 
+        <select ng-model="ph" name="ph" style="height: 28px;width: 130px;" required>
+               <option value="1">4</option>
+               <option value="2">4-5</option>
+               <option value="3">5-7</option>
+               <option value="4">7-9></option>
+           </select>
+            
+   </div>
+   
+    <div  style="font-size:25px;margin-left:1cm" >
+        
+        Select the Hydration
+         <select ng-model="hydration" name= "hydration" style="height: 28px;width: 130px;" required>
+               <option value="1"> very Dry</option>
+               <option value="2">Dry</option>
+               <option value="3">Average</option>
+               <option value="4"> Wet</option>
+               <option value="5">Very wet</option>
+           </select>
+          
+   </div>
+   
+    <br>
+
+    <hr style="height: 1px ;background-color:black;margin:0%">
+    
+        <br>
+        <button  type="submit"  ng-click="verification()" style="background-color: blueviolet; padding-left:20px;padding-right:20px;font-size:20px;color:aliceblue;margin-left:30%"><b> Verify and Submit</b></button> 
+        <br>
+        
+        
+        
+
+</div>
+</form>
+<div>
+<h4 style="text-align:center;font-size: 30px;color:rgb(251, 247, 247);">Your Crop Index</h4>
+<div style="border: 1px solid rgb(250, 252, 250);margin-left:60%;margin-right:6cm">
+<h3 ng-bind="rate1" style="text-align:center;font-size: 10px;color:rgb(251, 247, 247);" ></h3>
+<h3 ng-bind="rate2" style="text-align:center;font-size: 10px;color:rgb(251, 247, 247);"></h3>
+<h3 ng-bind="rate3" style="text-align:center;font-size: 10px;color:rgb(251, 247, 247);"></h3>
+<h3 ng-bind="rate4" style="text-align:center;font-size: 10px;color:rgb(251, 247, 247);"></h3>
+<h3 ng-bind="rate5" style="text-align:center;font-size: 10px;color:rgb(251, 247, 247);"></h3>
+</div>
+<p ng-bind="show" style="text-align:center;font-size: 100px;color:rgb(251, 247, 247);margin-bottom:0%"><b></b></p>
+<h3 ng-bind="message" style="text-align:center;color:rgb(251, 247, 247);"></h3>
+</div>
+</body>
+</html>

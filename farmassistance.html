@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm Assisatnce</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script></head>
+
+<body ng-app="" style="background-image:url(1305.jpg);background-repeat:no-repeat;background-size:cover">
+    <div style="text-align: center;font-size:30px;padding-bottom:2cm">
+       <b> SELLER REGISTRATION FORM</b>
+    </div>
+    <form name="myform" style="width: 500px;margin-left: 40%;">
+Enter Name: <input type="text" name='name' ng-model="username" required>
+<span style="color:red" ng-show="myform.name.$dirty && myform.name.$error.required">
+Your name is required.
+</span>
+<br><br>
+Enter Email: <input type="email" name='email' ng-model='useremail' required>
+<span style="color:red" ng-show="myform.email.$dirty && myform.email.$error.required">
+Your email is required.
+</span>
+<span style="color:red" ng-show="myform.email.$dirty && myform.email.$error.email">
+Email address wrong..
+</span>
+<br><br>
+Age:<input type="number" name='age' ng-model='userage' required>
+<span style="color:red" ng-show="myform.age.$dirty && myform.age.$error.required">*</span>
+<br><br>
+
+Mobile Number:
+<input type="tel" name='mobile' ng-model='usermobile'  ng-minlength="10" required>
+<span style="color:red" ng-show="myform.mobile.$dirty && myform.mobile.$error.required">*</span>
+
+<br><br>
+
+Gender:
+<input type="radio" name="gender" ng-model="usergender" ng-model="male" required> Male
+<input type="radio" name="gender" ng-model="usergender" ng-model="female" required> Female
+<span style="color:red" ng-show="myform.gender.$dirty && myform.gender.$error.required">*</span>
+<br><br>
+
+<br><br>
+
+<button  ng-disabled="myform.name.$invalid || myform.email.$invalid || myform.age.$invalid ||  myform.password.pattern" ng-click='submit()' style="background-color: blue; padding:10px">
+Save Data
+</button>
+</form>
+</body>
+    
+</body>
+</html>

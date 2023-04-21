@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Details</title>
+    <script
+src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+
+    <script>
+        var app = angular.module("myapp",[]);
+        app.controller('mycontroller',function($scope){
+            $scope.verification = function(){
+                $scope.result = $scope.crop;
+                $scope.fruitview=$scope.fruit;
+                $scope.show="You have Selected "+$scope.fruitview+" from "+$scope.result;
+                
+                }
+               
+        })
+        </script>
+</head>
+
+<body ng-app="myapp" ng-controller="mycontroller" style=" font-family:verdana;background-image: url('back3.jpg');margin: top 50px;border-radius:10px;background-size:cover;opacity:0.8;background-repeat:no-repeat">
+    <h1 style="text-align:center;">ENTER THE CROP DETAILS HERE</h1>
+    <BR>
+        <br>
+    <div style="background-image: url('1305.jpg');margin:auto;width: 600px;height: 500px;margin: top 50px;border-radius:10px;background-size:cover;opacity:0.8">
+   <div style="font-size:25px;margin-left:1cm">
+    <br>
+    <form name="myForm">
+      Select the crop Type <select ng-model="crop" style="height: 28px;width: 130px;">
+        <option value="fruit">Fruit</option>
+        <option ng-model="vegetable">Vegetable</option>
+        <option>Show Crop</option>
+        <option>Flowers</option>
+        <option>Cash Crops</option> 
+    </select>
+   </div>
+    <br><br>
+    <div  style="font-size:25px;margin-left:1cm" ng-show="crop === 'fruit'">
+        
+         Select the Fruit 
+         <select ng-model="fruit" name="fruitm" style="height: 28px;width: 130px;" required>
+                <option value="mango">MANGO</option>
+                <option>Apple</option>
+                <option>Orange</option>
+                <option>Grapes</option>
+                <option>Water-melon</option>
+            </select>
+            <span style="color:red" ng-show="myForm.fruitm.$error.required && myForm.fruitm.$dirty"> *invalid</span>  
+    </div>
+   <!--<div>
+    Enter the Scale(Small,medium,large)'
+    <input type="text" name="scale" ng-model="userscale" required>
+    <span style="color:red" ng-show="myForm.scale.$dirty && myForm.scale.$error.required">
+    *Scale Required.
+    </span>
+   </div> -->
+    <div  style="font-size:25px;margin-left:1cm" 
+     ng-show="crop === 'vegetable'">
+        
+        Select the Vegetable <select style="height: 28px;width: 130px;"  >
+               <option>Tomato</option>
+               <option>Potato</option>
+               <option>Ginger</option>
+               <option>Ladies Finger</option>
+               <option>Cabbage</option>
+           </select>
+   </div>
+   
+    <br>
+
+    <hr style="height: 1px ;background-color:black;margin:0%">
+    
+        <br>
+        <button  type="submit" ng-disabled="myForm.$invalid" ng-click="verification()" style="background-color: blueviolet; padding-left:20px;padding-right:20px;font-size:20px;color:aliceblue;margin-left:30%"><b> Verify and Submit</b></button> 
+        <br>
+        
+        <p ng-bind="show" style="text-align:center;font-size: 15px;color:black;"></p>
+        <p style="text-align:center;font-size: 20px;color:black;"  ng-show="crop==='fruit'"> Selected Fruit</p>
+        <div ng-show="crop === 'fruit'" style="text-align:center;margin:0%">
+        <a  ng-bind="fruitview | uppercase" style="text-align:center;color:aliceblue;text-decoration:none;background-color:blue" ng-show="fruit === 'mango'" href="mango.html">View Details</a>
+</div>
+</form>
+</body>
+</html>
